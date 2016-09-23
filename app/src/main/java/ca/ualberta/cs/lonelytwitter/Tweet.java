@@ -1,23 +1,31 @@
 package ca.ualberta.cs.lonelytwitter;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by scobie on 9/15/16.
+ * Created by watts1 on 9/15/16.
  */
-public abstract class Tweet implements Tweetable{
+public abstract class Tweet implements Tweetable {
     private String message;
     private Date date;
-    private ArrayList<CurrentMood> MoodList;
 
     public Tweet(String message){
         this.message = message;
         this.date = new Date();
     }
 
+    public Tweet(String message, Date date){
+        this.message = message;
+        this.date = date;
+    }
+    @Override
+    public String toString(){
+        return message;
+    }
 
     public abstract Boolean isImportant();
+
+
 
     public void setMessage(String message) throws TweetTooLongException {
         if (message.length() > 140){
@@ -27,15 +35,7 @@ public abstract class Tweet implements Tweetable{
         this.message = message;
     }
 
-    public ArrayList<CurrentMood> getMoodList() {
-        return MoodList;
-    }
-
-    public void setMoodList(ArrayList<CurrentMood> moodList) {
-        MoodList = moodList;
-    }
-
-    public void setDate(Date date){
+    public void setDate(Date date) {
         this.date = date;
     }
 
